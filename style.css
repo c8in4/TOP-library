@@ -9,12 +9,6 @@
   margin: 0;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
 header,
 footer { 
   text-align: center;
@@ -22,9 +16,16 @@ footer {
 }
 
 main {
-  flex: 1
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, clamp(150px, 33%, 250px));
+  grid-auto-rows: minmax(150px, auto);
+  gap: 1rem;
 }
 
 .card {
+  padding: 1rem;
+  border-radius: 0.5rem;
   background-color: var(--card-bg-clr);
+  box-shadow: 3px 3px 10px 0 rgb(95, 95, 95);
 }
