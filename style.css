@@ -9,6 +9,13 @@
   margin: 0;
 }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 header,
 footer { 
   text-align: center;
@@ -16,10 +23,16 @@ footer {
 }
 
 main {
+  flex: 1;
+  width: 100vw;
   padding: 1rem;
+}
+
+#display {
   display: grid;
-  grid-template-columns: repeat(auto-fill, clamp(150px, 33%, 250px));
-  grid-auto-rows: minmax(150px, auto);
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 150px;
   gap: 1rem;
 }
 

@@ -1,6 +1,9 @@
 const myLibrary = [
   new Book("The Hobbit", "J.R.R Tolkien", 301),
+  new Book("Test Title", "Test Author", 2),
+  new Book("Test Title", "Test Author", 2),
   new Book("Test Title", "Test Author", 2)
+
 ];
 
 function Book(title, author, pages) {
@@ -20,7 +23,7 @@ function loadMyLibrary() {
 }
 
 function createCard(book) {
-  const display = document.querySelector(".display");
+  const display = document.querySelector("#display");
   const card = document.createElement("div");
   const title = document.createElement("h2");
   const author = document.createElement("p");
