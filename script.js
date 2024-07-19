@@ -1,13 +1,5 @@
-const myLibrary = [
-  new Book("The Hobbit", "J.R.R Tolkien", 301),
-  new Book("Test Title", "Test Author", 2),
-  new Book("Test Title", "Test Author", 2),
-  new Book("Test Title", "Test Author", 2)
-
-];
-
 const dialog = document.querySelector("dialog");
-const button = document.querySelector("#open-dialog");
+const openDialogButton = document.querySelector("#open-dialog");
 const addBookButton = document.querySelector("#add-book-button");
 const closeDialogButton = document.querySelector("#close-dialog-button");
 const form = document.querySelector("form");
@@ -15,34 +7,55 @@ const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 
+function Book(title, author, pages) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+};
+
+const myLibrary = [
+  new Book("The Hobbit", "J.R.R Tolkien", 301),
+];
 
 
-button.addEventListener("click", () => {
+openDialogButton.addEventListener("click", () => {
   dialog.showModal();
-});
-
-addBookButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  console.log(title.value);
-  form.reset();
-  dialog.close();
 });
 
 closeDialogButton.addEventListener("click", () => {
   dialog.close();
 });
 
-function Book(title, author, pages) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-}
+addBookButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  addBookToLibrary(title.value, author.value, pages.value);
+  loadMyLibrary();
+  form.reset();
+  dialog.close();
+});
 
-function addBookToLibrary() {
 
+function addBookToLibrary(title, author, pages) {
+  myLibrary.push(new Book(title, author, pages));
+  sortMyLibrary();
+};
+
+function sortMyLibrary() {
+  myLibrary.sort((a, b) => {
+    const titleA = a.title.toUpperCase();
+    const titleB = b.title.toUpperCase();
+    if (titleA < titleB) {
+      return -1;
+    }
+    if (titleA > titleB) {
+      return 1;
+    }
+    return 0;
+  });
 }
 
 function loadMyLibrary() {
+  display.textContent = "";
   myLibrary.forEach(book => {
     createCard(book);
   })
@@ -67,4 +80,4 @@ function createCard(book) {
   display.appendChild(card);
 }
 
-onload(loadMyLibrary());
+loadMyLibrary();
