@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+
 <body>
   <header>
     <h1>Library</h1>
@@ -14,19 +16,42 @@
 
   <main>
     <div id="display"></div>
+
     <button id="open-dialog">Add new book</button>
+
     <dialog>
-      <form action="" method="dialog">
-        <label for="title">
-          Title
-          <input type="text">
-        </label>
+      <button class="close-button" id="close-dialog-button">X</button>
+      <form id="form" method="dialog">
+        <div>
+          <label for="title">
+            <p>Title</p>
+            <input type="text" name="title" id="title">
+          </label>
+        </div>
+        <div>
+          <label for="author">
+            <p>Author</p>
+            <input type="text" name="author" id="author">
+          </label>
+        </div>
+        <div>
+          <label for="pages">
+            <p>Pages</p>
+            <input type="number" name="pages" id="pages">
+          </label>
+        </div>
+        <menu>
+          <input type="reset" value="Reset">
+          <input id="add-book-button" type="submit" value="Add Book">
+        </menu>
       </form>
     </dialog>
+
   </main>
 
   <footer>
     <small>made by c8in4</small>
   </footer>
 </body>
+
 </html>

@@ -8,8 +8,29 @@ const myLibrary = [
 
 const dialog = document.querySelector("dialog");
 const button = document.querySelector("#open-dialog");
+const addBookButton = document.querySelector("#add-book-button");
+const closeDialogButton = document.querySelector("#close-dialog-button");
+const form = document.querySelector("form");
+const title = document.querySelector("#title");
+const author = document.querySelector("#author");
+const pages = document.querySelector("#pages");
 
-button.addEventListener("click", () => dialog.showModal());
+
+
+button.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+addBookButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log(title.value);
+  form.reset();
+  dialog.close();
+});
+
+closeDialogButton.addEventListener("click", () => {
+  dialog.close();
+});
 
 function Book(title, author, pages) {
   this.title = title;
