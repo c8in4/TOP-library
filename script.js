@@ -6,6 +6,11 @@ const myLibrary = [
 
 ];
 
+const dialog = document.querySelector("dialog");
+const button = document.querySelector("#open-dialog");
+
+button.addEventListener("click", () => dialog.showModal());
+
 function Book(title, author, pages) {
   this.title = title;
   this.author = author;
