@@ -74,10 +74,8 @@ input[type="submit"] {
   border-radius: 1rem;
 }
 
-.close-button,
-.delete-button {
-  padding: 0;
-  background: none;
+.close-button {
+  font-weight: bold;
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
@@ -86,17 +84,16 @@ input[type="submit"] {
   transform: translate(-100%, 0);
 }
 
+.close-button:hover,
+.delete-button:hover {
+  cursor: pointer;
+}
+
 button:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
   cursor: pointer;
   background-color: #88c3fb;
-}
-
-.close-button:hover,
-.delete-button:hover {
-  cursor: pointer;
-  background-color: #ff7272;
 }
 
 .card {
@@ -109,10 +106,7 @@ input[type="submit"]:hover {
   justify-content: space-between;
 }
 
-/* .card button {
-  padding: 0 0.3rem;
-  border-radius: 0;
-  position: relative;
-  right: 50%;
-  transform: translate(100%, 0);
-} */
+.card .card-buttons {
+  display: flex;
+  align-items: center;
+}

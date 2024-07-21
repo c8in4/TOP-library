@@ -34,7 +34,7 @@ addBookButton.addEventListener("click", (e) => {
   const pages = document.querySelector("#pages");
   const status = document.querySelector("#status");
 
-  addBook(title.value, author.value, pages.value, status.value);
+  addBook(title.value, author.value, pages.value, status.checked);
   loadMyLibrary();
   form.reset();
   dialog.close();
@@ -79,9 +79,14 @@ function createCard(book) {
   const author = document.createElement("p");
   const pages = document.createElement("p");
   const status = document.createElement("p");
+  const buttons = document.createElement("div");
   const statusButton = document.createElement("button");
-
   const deleteButton = document.createElement("img");
+
+  statusButton.addEventListener("click", () => {
+    book.status = !book.status;
+    loadMyLibrary();
+  });
 
   deleteButton.addEventListener("click", () => {
     deleteBook(book.title, myLibrary.indexOf(book));
@@ -105,15 +110,18 @@ function createCard(book) {
   status.textContent = "Status: " + read;
   statusButton.textContent = "Mark as " + buttonText;
   
+  buttons.setAttribute("class", "card-buttons");
+  buttons.appendChild(statusButton);
+  buttons.appendChild(deleteButton);
+
   infos.appendChild(title);
   infos.appendChild(author);
   infos.appendChild(pages);
   infos.appendChild(status);
-  infos.appendChild(statusButton);
 
   card.setAttribute("class", "card");
   card.appendChild(infos);
-  card.appendChild(deleteButton);
+  card.appendChild(buttons);
 
   display.appendChild(card);
 }
