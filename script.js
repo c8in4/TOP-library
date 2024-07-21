@@ -6,6 +6,7 @@ const form = document.querySelector("form");
 const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
+const display = document.querySelector("#display");
 
 function Book(title, author, pages) {
   this.title = title;
@@ -62,20 +63,29 @@ function loadMyLibrary() {
 }
 
 function createCard(book) {
-  const display = document.querySelector("#display");
   const card = document.createElement("div");
+  const infos = document.createElement("div");
   const title = document.createElement("h2");
   const author = document.createElement("p");
   const pages = document.createElement("p");
+  // read needs to be added
+  const deleteButton = document.createElement("img");
+
+  deleteButton.setAttribute("class", "delete-button");
+  deleteButton.setAttribute("src", "icons/delete.svg");
+  deleteButton.setAttribute("alt", "delete button");
 
   title.textContent = book.title;
   author.textContent = "Author: " + book.author;
   pages.textContent = "Pages: " + book.pages;
 
+  infos.appendChild(title);
+  infos.appendChild(author);
+  infos.appendChild(pages);
+
   card.setAttribute("class", "card");
-  card.appendChild(title);
-  card.appendChild(author);
-  card.appendChild(pages);
+  card.appendChild(infos);
+  card.appendChild(deleteButton);
 
   display.appendChild(card);
 }

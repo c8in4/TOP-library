@@ -7,6 +7,7 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
+  font-family: sans-serif;
 }
 
 body {
@@ -17,7 +18,7 @@ body {
 }
 
 header,
-footer { 
+footer {
   text-align: center;
   padding: 1rem;
 }
@@ -26,18 +27,18 @@ main {
   flex: 1;
   width: 100vw;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #display {
+  padding: 1rem;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, clamp(200px, 1fr, 500px));
   grid-auto-rows: 150px;
   gap: 1rem;
-}
-
-form {
-  margin-top: 1.5rem;
 }
 
 form div+div {
@@ -50,12 +51,34 @@ menu {
   padding: 0;
 }
 
-.close-button {
-  aspect-ratio: 1;
-  font-weight: bold;
+dialog {
+  position: absolute;
+  left: 50%;
+  top: 33%;
+  transform: translate(-50%, -50%);
+  /* display: flex;               this seems to break the modal
+  flex-direction: column; */
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+button,
+input[type="reset"],
+input[type="submit"] {
   border: none;
-  border-radius: 50%;
-  float: right;
+  background-color: #6cb7fd;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.close-button,
+.delete-button {
+  padding: 0;
+  background: none;
+  height: 1.5rem;
+  align-self: end;
 }
 
 .card {
@@ -63,4 +86,7 @@ menu {
   border-radius: 0.5rem;
   background-color: var(--card-bg-clr);
   box-shadow: 3px 3px 10px 0 rgb(95, 95, 95);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
