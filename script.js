@@ -9,6 +9,10 @@ function Book(title, author, pages, status) {
   this.author = author;
   this.pages = pages;
   this.status = status;
+
+  this.changeStatus = () => {
+    this.status = !this.status;
+  }
 };
 
 const myLibrary = [
@@ -84,7 +88,7 @@ function createCard(book) {
   const deleteButton = document.createElement("img");
 
   statusButton.addEventListener("click", () => {
-    book.status = !book.status;
+    book.changeStatus();
     loadMyLibrary();
   });
 
