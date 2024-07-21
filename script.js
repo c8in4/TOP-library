@@ -40,13 +40,19 @@ addBookButton.addEventListener("click", (e) => {
 
   addBook(title.value, author.value, pages.value, status.checked);
   loadMyLibrary();
-  form.reset();
+  
+  form.reset()
   dialog.close();
 });
 
 function addBook(title, author, pages, status) {
-  myLibrary.push(new Book(title, author, pages, status));
-  sortMyLibrary();
+  author = !author ? "unknown" : author;
+  pages = !pages ? "unknown" : pages;
+
+  if (title) {
+    myLibrary.push(new Book(title, author, pages, status));
+    sortMyLibrary();
+  }
 };
 
 function deleteBook(title, index) {
@@ -113,7 +119,7 @@ function createCard(book) {
   };
   status.textContent = "Status: " + read;
   statusButton.textContent = "Mark as " + buttonText;
-  
+
   buttons.setAttribute("class", "card-buttons");
   buttons.appendChild(statusButton);
   buttons.appendChild(deleteButton);
