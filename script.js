@@ -15,9 +15,13 @@ function Book(title, author, pages) {
 };
 
 const myLibrary = [
-  new Book("The Hobbit", "J.R.R Tolkien", 301),
-];
+  new Book("Pride and Prejudice", "	Jane Austen", 259),
+  new Book("The Great Gatsby", "Scott Fitzgerald", 180),
+  new Book("To Kill a Mockingbird", "Harper Lee", 281),
 
+  
+
+];
 
 openDialogButton.addEventListener("click", () => {
   dialog.showModal();
@@ -29,17 +33,22 @@ closeDialogButton.addEventListener("click", () => {
 
 addBookButton.addEventListener("click", (e) => {
   e.preventDefault();
-  addBookToLibrary(title.value, author.value, pages.value);
+  addBook(title.value, author.value, pages.value);
   loadMyLibrary();
   form.reset();
   dialog.close();
 });
 
-
-function addBookToLibrary(title, author, pages) {
+function addBook(title, author, pages) {
   myLibrary.push(new Book(title, author, pages));
   sortMyLibrary();
 };
+
+function deleteBook(title, index) {
+  confirm(`Are you sure you want to delete "${title}"?`)
+  ? delete myLibrary[index]
+  : false;
+}
 
 function sortMyLibrary() {
   myLibrary.sort((a, b) => {
@@ -59,7 +68,7 @@ function loadMyLibrary() {
   display.textContent = "";
   myLibrary.forEach(book => {
     createCard(book);
-  })
+  });
 }
 
 function createCard(book) {
@@ -69,7 +78,13 @@ function createCard(book) {
   const author = document.createElement("p");
   const pages = document.createElement("p");
   // read needs to be added
+
   const deleteButton = document.createElement("img");
+
+  deleteButton.addEventListener("click", () => {
+    deleteBook(book.title, myLibrary.indexOf(book));
+    loadMyLibrary();
+  });
 
   deleteButton.setAttribute("class", "delete-button");
   deleteButton.setAttribute("src", "icons/delete.svg");
