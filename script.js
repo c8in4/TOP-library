@@ -4,13 +4,15 @@ const addBookButton = document.querySelector("#add-book-button");
 const closeDialogButton = document.querySelector("#close-dialog-button");
 const display = document.querySelector("#display");
 
-function Book(title, author, pages, status) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.status = status;
+class Book {
+  constructor(title, author, pages, status) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+  }
 
-  this.changeStatus = () => {
+  changeStatus = () => {
     this.status = !this.status;
   }
 };
@@ -40,7 +42,7 @@ addBookButton.addEventListener("click", (e) => {
 
   addBook(title.value, author.value, pages.value, status.checked);
   loadMyLibrary();
-  
+
   form.reset()
   dialog.close();
 });
