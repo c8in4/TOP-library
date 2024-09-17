@@ -43,7 +43,7 @@ main {
   gap: 1rem;
 }
 
-form div+div {
+form div + div {
   margin-top: 1rem;
 }
 
@@ -51,9 +51,12 @@ menu {
   margin-top: 0.5rem;
   text-align: center;
   padding: 0;
+  width: 110%;
 }
 
 dialog {
+  width: max-content;
+  border-radius: 1rem;
   position: absolute;
   left: 50%;
   top: 33%;
@@ -75,6 +78,11 @@ input[type="submit"] {
   border-radius: 1rem;
 }
 
+/* dialog input[type="reset"],
+dialog input[type="submit"] {
+  width: 50%;
+} */
+
 .close-button {
   font-weight: bold;
   border-radius: 50%;
@@ -90,6 +98,15 @@ input[type="reset"]:hover,
 input[type="submit"]:hover {
   cursor: pointer;
   background-color: #88c3fb;
+}
+
+input:invalid {
+  border: 1px solid red;
+}
+
+input:valid {
+  border: 1px solid green;
+  
 }
 
 .close-button:hover,

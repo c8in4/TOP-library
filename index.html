@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Library</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-</head>
+  <body>
+    <header>
+      <h1>Library</h1>
+    </header>
 
-<body>
-  <header>
-    <h1>Library</h1>
-  </header>
+    <main>
+      <div id="display"></div>
 
-  <main>
-    <div id="display">
+      <button id="open-dialog">Add new book</button>
 
-    </div>
+      <dialog>
+        <img
+          src="icons/close.svg"
+          alt="close button"
+          id="close-dialog-button"
+          class="close-button"
+        />
+        <form id="form" method="dialog">
+          <div>
+            <label for="title">
+              <p>*Title</p>
+              <input required type="text" name="title" id="title" />
+            </label>
+          </div>
+          <div>
+            <label for="author">
+              <p>*Author</p>
+              <input required type="text" name="author" id="author" />
+            </label>
+          </div>
+          <div>
+            <label for="pages">
+              <p>*Pages</p>
+              <input required min="1" step="1" type="number" name="pages" id="pages" />
+            </label>
+          </div>
+          <div>
+            <label for="status">
+              <p>Have you read this book?</p>
+              <input type="checkbox" name="status" id="status" />
+            </label>
+          </div>
+          <menu>
+            <input type="reset" value="Reset" />
+            <input id="add-book-button" type="submit" value="Add Book" />
+          </menu>
+        </form>
+      </dialog>
+    </main>
 
-    <button id="open-dialog">Add new book</button>
-
-    <dialog>
-        <img src="icons/close.svg" alt="close button" id="close-dialog-button" class="close-button" >
-      <form id="form" method="dialog">
-        <div>
-          <label for="title">
-            <p>Title</p>
-            <input type="text" name="title" id="title">
-          </label>
-        </div>
-        <div>
-          <label for="author">
-            <p>Author</p>
-            <input type="text" name="author" id="author">
-          </label>
-        </div>
-        <div>
-          <label for="pages">
-            <p>Pages</p>
-            <input type="number" name="pages" id="pages">
-          </label>
-        </div>
-        <div>
-          <label for="status">
-            <p>Have you read this book?</p>
-            <input type="checkbox" name="status" id="status">
-          </label>
-        </div>
-        <menu>
-          <input type="reset" value="Reset">
-          <input id="add-book-button" type="submit" value="Add Book">
-        </menu>
-      </form>
-    </dialog>
-
-  </main>
-
-  <footer>
-    <small>made by c8in4</small>
-  </footer>
-</body>
-
+    <footer>
+      <small>made by c8in4</small>
+    </footer>
+  </body>
 </html>
