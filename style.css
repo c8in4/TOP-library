@@ -1,81 +1,246 @@
-:root {
-  --card-bg-clr: #eee;
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+:root {
+  /* hsl (fallback color) */
+  --bg-dark: hsl(224 0% 90%);
+  --bg: hsl(224 0% 95%);
+  --bg-light: hsl(224 100% 100%);
+  --text: hsl(224 0% 4%);
+  --text-muted: hsl(224 0% 28%);
+  --highlight: hsl(224 100% 100%);
+  --border: hsl(224 0% 50%);
+  --border-muted: hsl(224 0% 62%);
+  --primary: hsl(62 35% 57%);
+  --secondary: hsl(248 66% 79%);
+  --danger: hsl(9 21% 41%);
+  --warning: hsl(52 23% 34%);
+  --success: hsl(147 19% 36%);
+  --info: hsl(217 22% 41%);
+  /* oklch */
+  --bg-dark: oklch(0.92 0 110);
+  --bg: oklch(0.96 0 110);
+  --bg-light: oklch(1 0 110);
+  --text: oklch(0.15 0 110);
+  --text-muted: oklch(0.4 0 110);
+  --highlight: oklch(1 0 110);
+  --border: oklch(0.6 0 110);
+  --border-muted: oklch(0.7 0 110);
+  --primary: oklch(0.76 0.1 110);
+  --secondary: oklch(0.76 0.1 290);
+  --danger: oklch(0.5 0.05 30);
+  --warning: oklch(0.5 0.05 100);
+  --success: oklch(0.5 0.05 160);
+  --info: oklch(0.5 0.05 260);
+}
+
+body.dark {
+  /* hsl (fallback color) */
+  --bg-dark: hsl(224 0% 1%);
+  --bg: hsl(224 0% 4%);
+  --bg-light: hsl(224 0% 9%);
+  --text: hsl(224 0% 95%);
+  --text-muted: hsl(224 0% 69%);
+  --highlight: hsl(224 0% 39%);
+  --border: hsl(224 0% 28%);
+  --border-muted: hsl(224 0% 18%);
+  --primary: hsl(60 100% 11%);
+  --secondary: hsl(252 34% 36%);
+  --danger: hsl(9 26% 64%);
+  --warning: hsl(52 19% 57%);
+  --success: hsl(146 17% 59%);
+  --info: hsl(217 28% 65%);
+  /* oklch */
+  --bg-dark: oklch(0.1 0 110);
+  --bg: oklch(0.15 0 110);
+  --bg-light: oklch(0.2 0 110);
+  --text: oklch(0.96 0 110);
+  --text-muted: oklch(0.76 0 110);
+  --highlight: oklch(0.5 0 110);
+  --border: oklch(0.4 0 110);
+  --border-muted: oklch(0.3 0 110);
+  --primary: oklch(0.4 0.1 110);
+  --secondary: oklch(0.4 0.1 290);
+  --danger: oklch(0.7 0.05 30);
+  --warning: oklch(0.7 0.05 100);
+  --success: oklch(0.7 0.05 160);
+  --info: oklch(0.7 0.05 260);
+}
+
+.theme-button {
+  background-color: var(--bg-light);
+  position: fixed;
+  right: 1rem;
+  top: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  border: 0.1rem solid var(--border);
+  border-radius: 0.5rem;
+}
+
+.theme-button:hover {
+  background-color: var(--bg);
+  border-color: var(--highlight);
+  cursor: pointer;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text);
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+/* old stuff */
+/* :root {
+  --card-bg-clr: #eee;
+} */
+/* 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
-  font-family: sans-serif;
-}
-
+  font-family: sans-serif; */
+/* } */
+/* 
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 header,
 footer {
+  background-color: var(--secondary);
   text-align: center;
-  padding: 1rem;
+  padding: 1em;
 }
 
 main {
   flex: 1;
-  width: 100vw;
-  padding: 1rem;
-  display: flex;
+  /* width: 100vw;
+  padding: 1rem; */
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
 }
 
 #display {
-  padding: 1rem;
+  /* padding: 1rem;
   width: 100%;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(250px, 45ch));
   word-wrap: break-word;
   word-break: break-all;
-  gap: 1rem;
+  gap: 1rem; */
 }
 
-form div + div {
-  margin-top: 1rem;
+form div+div {
+  /* margin-top: 1rem; */
 }
 
 menu {
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem;
   text-align: center;
   padding: 0;
-  width: 110%;
+  width: 110%; */
 }
 
 dialog {
-  width: max-content;
+  /* width: max-content;
   border-radius: 1rem;
   position: absolute;
   left: 50%;
   top: 33%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 
 dialog::backdrop {
-  background: rgba(0, 0, 0, 0.7);
+  /* background: rgba(0, 0, 0, 0.7); */
 }
 
 button,
 input[type="reset"],
 input[type="submit"] {
-  margin: 0.5rem auto;
+  /* margin: 0.5rem auto;
   border: none;
   font-weight: bold;
   background-color: #6cb7fd;
   padding: 0.5rem 1rem;
-  border-radius: 1rem;
+  border-radius: 1rem; */
 }
 
 /* dialog input[type="reset"],
@@ -84,52 +249,52 @@ dialog input[type="submit"] {
 } */
 
 .close-button {
-  font-weight: bold;
+  /* font-weight: bold;
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
   position: relative;
   left: 100%;
-  transform: translate(-100%, 0);
+  transform: translate(-100%, 0); */
 }
 
 button:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-  cursor: pointer;
-  background-color: #88c3fb;
+  /* cursor: pointer;
+  background-color: #88c3fb; */
 }
 
 input:invalid {
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 input:valid {
-  border: 1px solid green;
-  
+  /* border: 1px solid green; */
+
 }
 
 .close-button:hover,
 .delete-button:hover {
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .card {
-  padding: 1rem;
+  /* padding: 1rem;
   border-radius: 0.5rem;
   background-color: var(--card-bg-clr);
   box-shadow: 3px 3px 10px 0 rgb(95, 95, 95);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 
 .card .card-buttons {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
 }
 
 .card-buttons button {
-  margin: 0;
+  /* margin: 0; */
 }
