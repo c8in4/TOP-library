@@ -100,7 +100,7 @@ h6 {
   --success: oklch(0.5 0.05 160);
   --info: oklch(0.5 0.05 260);
 
-  --box-shadow: 3px 3px 10px 0 rgb(95, 95, 95)
+  --box-shadow: 0.1rem 0.1rem 0.5rem var(--text-muted);
 }
 
 body.dark {
@@ -134,6 +134,8 @@ body.dark {
   --warning: oklch(0.7 0.05 100);
   --success: oklch(0.7 0.05 160);
   --info: oklch(0.7 0.05 260);
+
+  --box-shadow: 0.1rem 0.1rem 0.5rem var(--text-muted);
 }
 
 .theme-button {
@@ -149,7 +151,6 @@ body.dark {
 .theme-button:hover {
   background-color: var(--bg);
   border-color: var(--highlight);
-  cursor: pointer;
 }
 
 body {
@@ -172,43 +173,77 @@ footer {
 
 main {
   flex: 1;
+  background: linear-gradient(var(--bg-light), var(--bg-dark) 100%);
   overflow-y: scroll;
-  /* width: 100vw;
-  padding: 1rem; */
-  /* display: flex;
+  padding: 1rem;
+  display: flex;
   flex-direction: column;
-  align-items: center; */
+  align-items: center;
+  position: relative;
+}
+
+button {
+  margin-bottom: 1rem;
+  background-color: var(--secondary);
+  color: var(--text);
+  padding: 0.2rem 0.5rem;
+  border: 0.1rem solid var(--border);
+  border-radius: 0.5rem;
+}
+
+button#open-dialog-button {
+  position: sticky;
+  top: -0.5rem;
+}
+
+button:hover {
+  border-color: var(--highlight);
+  background-color: var(--primary);
+  cursor: pointer;
+}
+
+img:hover {
+  cursor: pointer;
 }
 
 #display {
-  background-color: var(--bg-dark);
-  padding: 1rem;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(25ch, 1fr));
   justify-content: center;
   gap: 1rem;
 }
 
 .card {
   padding: 1rem;
-  background-color: var(--bg);
+  background: linear-gradient(var(--bg-light), var(--bg-dark) 100%);
   border-radius: 0.5rem;
   border: 0.07rem solid var(--border);
+  border-top: var(--highlight);
   box-shadow: var(--box-shadow);
+  display: flex;
+  flex-direction: column;
 
   p {
     color: var(--text-muted);
   }
 
-  /*
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; */
+  .infoContainer {
+    flex: 1;
+  }
+
+  .cardButtonContainer {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      margin: 0;
+    }
+  }
 }
 
 .card:hover {
-  background-color: var(--bg-light);
+  background: linear-gradient(var(--secondary), var(--bg) 50%);
 }
 
 .card .card-buttons {
@@ -220,6 +255,8 @@ main {
 .card-buttons button {
   /* margin: 0; */
 }
+
+
 
 form div+div {
   /* margin-top: 1rem; */
@@ -233,16 +270,18 @@ menu {
 }
 
 dialog {
-  /* width: max-content;
-  border-radius: 1rem;
+  width: max-content;
+  border-radius: 0.5rem;
   position: absolute;
   left: 50%;
   top: 33%;
-  transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
 }
 
-dialog::backdrop {
-  /* background: rgba(0, 0, 0, 0.7); */
+::backdrop {
+  background-image: var(--bg-light);
+  /* opacity: 0.75; */
+  backdrop-filter: blur(0.25rem);
 }
 
 button,

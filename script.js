@@ -1,97 +1,113 @@
-const myLibrary = [new Book('The Hobbit', 'J.R.R. Tolkin', 295, false)]
-addBookToLibrary('Haribo macht Kinder froh', 'Goldbears', 1922, true)
-addBookToLibrary('The Hobbit', 'J.R.R. Tolkin', 295, false)
+const myLibrary = [
+  new Book('The Hobbit', 'J.R.R. Tolkin', 295, false),
+  new Book("Pride and Prejudice", "	Jane Austen", 259, true),
+  new Book("The Great Gatsby", "Scott Fitzgerald", 180, false),
+  new Book("To Kill a Mockingbird", "Harper Lee", 281, false)
+]
 
 const display = document.querySelector("#display")
 displayBooks()
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, readStatus) {
   if (!new.target) throw Error("Use 'new' operator to call 'Book' constructor")
-  // generate a unique `id` by using `crypto.randomUUID()`
-  this.id = crypto.randomUUID()
+  this.bookId = crypto.randomUUID()
   this.title = title
   this.author = author
   this.pages = pages
-  this.read = read ? 'already read' : 'not read yet'
+  this.readStatus = readStatus
 }
 
-Book.prototype.info = function () {
-  return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}.`
+Book.prototype.toggleReadStatus = function () {
+  this.readStatus = !this.readStatus
 }
 
-function addBookToLibrary(title, author, pages, read) {
-  // create new book
-  const newBook = new Book(title, author, pages, read)
-  // add new book to the array
+function addBookToLibrary(title, author, pages, readStatus) {
+  const newBook = new Book(title, author, pages, readStatus)
   myLibrary.push(newBook)
 }
 
 function displayBooks() {
   display.innerText = ''
-  // loop over myLibrary
   myLibrary.forEach(book => {
     const bookCard = createCard(book)
     displayCard(bookCard)
   })
-  // display each book as card or in a table
 }
 
 function createCard(book) {
   const cardContainer = document.createElement('div')
   cardContainer.classList.add('card')
+
   const title = document.createElement('h2')
   title.innerText = book.title
+
+  const infoContainer = document.createElement('div')
+  infoContainer.classList.add('infoContainer')
   const author = document.createElement('p')
-  author.innerText = 'by ' + book.author
+  author.innerText = book.author
+  author.style.fontWeight = 'bold'
   const pages = document.createElement('p')
   pages.innerText = 'has ' + book.pages + ' pages'
-  // TODO: add read status
+  const readStatus = document.createElement('p')
+  readStatus.innerText = book.readStatus ? 'already read' : 'not read yet'
+  infoContainer.append(author, pages, readStatus)
 
-  cardContainer.append(title, author, pages)
+  const cardButtonContainer = document.createElement('div')
+  cardButtonContainer.classList.add('cardButtonContainer')
+  const toggleReadStatusButton = document.createElement('button')
+  toggleReadStatusButton.innerText = book.readStatus ? 'unread' : 'read'
+  toggleReadStatusButton.addEventListener('click', () => {
+    book.toggleReadStatus()
+    displayBooks()
+  })
+
+  const deleteButton = document.createElement('img')
+  deleteButton.src = 'icons/delete.svg'
+  deleteButton.dataset.bookId = book.bookId
+  cardButtonContainer.append(toggleReadStatusButton, deleteButton)
+
+  cardContainer.append(title, infoContainer, cardButtonContainer)
   return cardContainer
-
 }
 
 function displayCard(card) {
   display.appendChild(card)
 }
-// const dialog = document.querySelector("dialog")
-// const openDialogButton = document.querySelector("#open-dialog")
-// const addBookButton = document.querySelector("#add-book-button")
-// const closeDialogButton = document.querySelector("#close-dialog-button")
-// const display = document.querySelector("#display")
 
-// class Book {
-//   constructor(title, author, pages, status) {
-//     this.title = title
-//     this.author = author
-//     this.pages = pages
-//     this.status = status
-//   }
+display.addEventListener('click', (event) => {
+  if (event.target.dataset.bookId) {
+    const id = event.target.dataset.bookId
+    deleteBook(id)
+  }
+})
 
-//   changeStatus = () => {
-//     this.status = !this.status
-//   }
-// }
+function deleteBook(id) {
+  const indexOfBookToDelete = myLibrary.findIndex(book => {
+    return book.bookId == id
+  })
+  myLibrary.splice(indexOfBookToDelete, 1)
 
-// const myLibrary = [
-//   new Book("Pride and Prejudice", "	Jane Austen", 259, true),
-//   new Book("The Great Gatsby", "Scott Fitzgerald", 180, false),
-//   new Book("To Kill a Mockingbird", "Harper Lee", 281, false),
-// ]
+  displayBooks()
+}
 
-// openDialogButton.addEventListener("click", () => {
-//   dialog.showModal()
-// })
+// dialog stuff
+const dialog = document.querySelector("dialog")
 
-// closeDialogButton.addEventListener("click", () => {
-//   dialog.close()
-// })
+const openDialogButton = document.querySelector("#open-dialog-button")
+openDialogButton.addEventListener("click", () => {
+  dialog.showModal()
+})
 
-// dialog.addEventListener("close", () => {
-//   form.reset()
-//   console.log("dialog closed")
-// })
+const closeDialogButton = document.querySelector("#close-dialog-button")
+closeDialogButton.addEventListener("click", () => {
+  dialog.close()
+})
+
+dialog.addEventListener("close", () => {
+  form.reset()
+  console.log("dialog closed")
+})
+
 
 // const form = document.querySelector("form")
 // const title = document.querySelector("#title")
@@ -118,12 +134,6 @@ function displayCard(card) {
 //   myLibrary.push(new Book(title, author, pages, status))
 // }
 
-// function deleteBook(title, index) {
-//   confirm(`Are you sure you want to delete "${title}"?`)
-//     ? delete myLibrary[index]
-//     : false
-// }
-
 // function sortMyLibrary() {
 //   myLibrary.sort((a, b) => {
 //     const titleA = a.title.toUpperCase()
@@ -137,67 +147,3 @@ function displayCard(card) {
 //     return 0
 //   })
 // }
-
-// function loadMyLibrary() {
-//   display.textContent = ""
-//   sortMyLibrary()
-//   myLibrary.forEach((book) => {
-//     createCard(book)
-//   })
-// }
-
-// function createCard(book) {
-//   const card = document.createElement("div")
-//   const infos = document.createElement("div")
-//   const title = document.createElement("h2")
-//   const author = document.createElement("p")
-//   const pages = document.createElement("p")
-//   const status = document.createElement("p")
-//   const buttons = document.createElement("div")
-//   const statusButton = document.createElement("button")
-//   const deleteButton = document.createElement("img")
-
-//   statusButton.addEventListener("click", () => {
-//     book.changeStatus()
-//     loadMyLibrary()
-//   })
-
-//   deleteButton.addEventListener("click", () => {
-//     deleteBook(book.title, myLibrary.indexOf(book))
-//     loadMyLibrary()
-//   })
-
-//   deleteButton.setAttribute("class", "delete-button")
-//   deleteButton.setAttribute("src", "icons/delete.svg")
-//   deleteButton.setAttribute("alt", "delete button")
-
-//   title.textContent = book.title
-//   author.textContent = "Author: " + book.author
-//   pages.textContent = "Pages: " + book.pages
-
-//   let read = "not read yet"
-//   let buttonText = '"read"'
-//   if (book.status) {
-//     read = "already read"
-//     buttonText = '"not read"'
-//   }
-//   status.textContent = "Status: " + read
-//   statusButton.textContent = "Mark as " + buttonText
-
-//   buttons.setAttribute("class", "card-buttons")
-//   buttons.appendChild(statusButton)
-//   buttons.appendChild(deleteButton)
-
-//   infos.appendChild(title)
-//   infos.appendChild(author)
-//   infos.appendChild(pages)
-//   infos.appendChild(status)
-
-//   card.setAttribute("class", "card")
-//   card.appendChild(infos)
-//   card.appendChild(buttons)
-
-//   display.appendChild(card)
-// }
-
-// loadMyLibrary()
