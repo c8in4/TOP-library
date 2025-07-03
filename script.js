@@ -1,5 +1,60 @@
+const myLibrary = [new Book('The Hobbit', 'J.R.R. Tolkin', 295, false)]
+addBookToLibrary('Haribo macht Kinder froh', 'Goldbears', 1922, true)
+addBookToLibrary('The Hobbit', 'J.R.R. Tolkin', 295, false)
 
+const display = document.querySelector("#display")
+displayBooks()
 
+function Book(title, author, pages, read) {
+  if (!new.target) throw Error("Use 'new' operator to call 'Book' constructor")
+  // generate a unique `id` by using `crypto.randomUUID()`
+  this.id = crypto.randomUUID()
+  this.title = title
+  this.author = author
+  this.pages = pages
+  this.read = read ? 'already read' : 'not read yet'
+}
+
+Book.prototype.info = function () {
+  return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}.`
+}
+
+function addBookToLibrary(title, author, pages, read) {
+  // create new book
+  const newBook = new Book(title, author, pages, read)
+  // add new book to the array
+  myLibrary.push(newBook)
+}
+
+function displayBooks() {
+  display.innerText = ''
+  // loop over myLibrary
+  myLibrary.forEach(book => {
+    const bookCard = createCard(book)
+    displayCard(bookCard)
+  })
+  // display each book as card or in a table
+}
+
+function createCard(book) {
+  const cardContainer = document.createElement('div')
+  cardContainer.classList.add('card')
+  const title = document.createElement('h2')
+  title.innerText = book.title
+  const author = document.createElement('p')
+  author.innerText = 'by ' + book.author
+  const pages = document.createElement('p')
+  pages.innerText = 'has ' + book.pages + ' pages'
+  // TODO: add read status
+
+  cardContainer.append(title, author, pages)
+  return cardContainer
+
+}
+
+function displayCard(card) {
+  display.appendChild(card)
+}
 // const dialog = document.querySelector("dialog")
 // const openDialogButton = document.querySelector("#open-dialog")
 // const addBookButton = document.querySelector("#add-book-button")
