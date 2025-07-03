@@ -85,8 +85,8 @@ function deleteBook(id) {
   const indexOfBookToDelete = myLibrary.findIndex(book => {
     return book.bookId == id
   })
+  if (!confirm(`Are you sure you want to delete '${myLibrary[indexOfBookToDelete].title}'`)) return
   myLibrary.splice(indexOfBookToDelete, 1)
-
   displayBooks()
 }
 
