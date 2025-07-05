@@ -15,9 +15,20 @@
   </header>
 
   <main>
-    <button id="open-dialog-button">Add new book</button>
-    <div id="display"></div>
+    <div class="display-control">
+      <button id="open-dialog-button">Add new book</button>
+      <div>
+        <label for="sortBooksBy">sort by:</label>
+        <select name="property" id="sortBooksBy">
+          <!-- <option value=""></option> -->
+          <option value="title">Title</option>
+          <option value="author">Author</option>
+          <option value="pages">Number of Pages</option>
+        </select>
+      </div>
+    </div>
 
+    <div id="display"></div>
 
     <dialog>
       <div class="dialog-header">

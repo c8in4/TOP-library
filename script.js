@@ -6,6 +6,8 @@ const myLibrary = [
 ]
 
 const display = document.querySelector("#display")
+const filterSelect = document.querySelector('#sortBooksBy')
+
 displayBooks()
 
 function Book(title, author, pages, readStatus) {
@@ -28,6 +30,7 @@ function addBookToLibrary(title, author, pages, readStatus) {
 
 function displayBooks(library = myLibrary) {
   display.innerText = ''
+  sortMyLibrary()
   library.forEach(book => {
     const bookCard = createCard(book)
     displayCard(bookCard)
@@ -122,15 +125,25 @@ function addBookFromFormToLibrary() {
   const pages = document.querySelector("#pages")
   const status = document.querySelector("#status")
 
-  console.log(status.checked)
-
   addBookToLibrary(title.value, author.value, pages.value, status.checked)
 }
 
-function sortMyLibrary(propertyToSortBy) {
+filterSelect.addEventListener('change', (event) => {
+  const propertyToSortBy = event.target.value
+  const sortedLibrary = sortMyLibrary(propertyToSortBy)
+  displayBooks(sortedLibrary)
+  return
+})
+
+function sortMyLibrary(propertyToSortBy = filterSelect.value) {
   myLibrary.sort((a, b) => {
-    const propertyOfA = a[propertyToSortBy]
-    const propertyOfB = b[propertyToSortBy]
+    let propertyOfA = a[propertyToSortBy]
+    let propertyOfB = b[propertyToSortBy]
+    if (typeof (propertyOfA) == 'string' && typeof (propertyOfB) == 'string') {
+      propertyOfA = propertyOfA.toUpperCase()
+      propertyOfB = propertyOfB.toUpperCase()
+    }
+
     if (propertyOfA > propertyOfB) {
       return 1
     } else return -1
