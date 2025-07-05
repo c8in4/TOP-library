@@ -202,8 +202,13 @@ button:hover {
   cursor: pointer;
 }
 
+img#close-dialog-button {
+  src: var(--close-dialog-button);
+}
+
 img:hover {
   cursor: pointer;
+  fill: aqua;
 }
 
 #display {
@@ -223,6 +228,10 @@ img:hover {
   box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: column;
+
+  div+div {
+    margin-top: 1rem;
+  }
 
   p {
     color: var(--text-muted);
@@ -280,6 +289,10 @@ dialog {
       display: grid;
       grid-template-columns: repeat(2, auto);
       gap: 1rem;
+
+      input[type='number'] {
+        width: 7ch;
+      }
     }
 
     .form-checkbox,

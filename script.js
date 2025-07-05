@@ -46,11 +46,15 @@ function createCard(book) {
   const author = document.createElement('p')
   author.innerText = book.author
   author.style.fontWeight = 'bold'
+  infoContainer.appendChild(author)
   const pages = document.createElement('p')
-  pages.innerText = 'has ' + book.pages + ' pages'
+  if (book.pages) {
+    pages.innerText = 'has ' + book.pages + ' pages'
+    infoContainer.appendChild(pages)
+  }
   const readStatus = document.createElement('p')
   readStatus.innerText = book.readStatus ? 'already read' : 'not read yet'
-  infoContainer.append(author, pages, readStatus)
+  infoContainer.appendChild(readStatus)
 
   const cardButtonContainer = document.createElement('div')
   cardButtonContainer.classList.add('cardButtonContainer')
@@ -62,7 +66,7 @@ function createCard(book) {
   })
 
   const deleteButton = document.createElement('img')
-  deleteButton.src = 'icons/delete.svg'
+  deleteButton.src = 'icons/delete-white.svg'
   deleteButton.dataset.bookId = book.bookId
   cardButtonContainer.append(toggleReadStatusButton, deleteButton)
 
@@ -92,6 +96,7 @@ function deleteBook(id) {
 
 // dialog stuff
 const dialog = document.querySelector("dialog")
+const form = document.querySelector("form")
 
 const openDialogButton = document.querySelector("#open-dialog-button")
 openDialogButton.addEventListener("click", () => {
@@ -104,35 +109,21 @@ closeDialogButton.addEventListener("click", () => {
 })
 
 dialog.addEventListener("close", () => {
+  if (dialog.returnValue == 'add-book') {
+    addBookFromFormToLibrary()
+    displayBooks()
+  }
   form.reset()
-  console.log("dialog closed")
 })
 
+function addBookFromFormToLibrary() {
+  const title = document.querySelector("#title")
+  const author = document.querySelector("#author")
+  const pages = document.querySelector("#pages")
+  const status = document.querySelector("#status")
 
-// const form = document.querySelector("form")
-// const title = document.querySelector("#title")
-// const author = document.querySelector("#author")
-// const pages = document.querySelector("#pages")
-// const status = document.querySelector("#status")
-
-// addBookButton.addEventListener("click", (e) => {
-//   e.preventDefault()
-//   if (
-//     title.checkValidity() &&
-//     author.checkValidity() &&
-//     pages.checkValidity()
-//   ) {
-//     addBook(title.value, author.value, pages.value, status.checked)
-//     loadMyLibrary()
-//   }
-
-//   form.reset()
-//   dialog.close()
-// })
-
-// function addBook(title, author, pages, status) {
-//   myLibrary.push(new Book(title, author, pages, status))
-// }
+  addBookToLibrary(title.value, author.value, pages.value, status.value)
+}
 
 // function sortMyLibrary() {
 //   myLibrary.sort((a, b) => {
