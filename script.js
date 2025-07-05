@@ -1,6 +1,6 @@
 const myLibrary = [
   new Book('The Hobbit', 'J.R.R. Tolkin', 295, false),
-  new Book("Pride and Prejudice", "	Jane Austen", 259, true),
+  new Book("Pride and Prejudice", "Jane Austen", 259, true),
   new Book("The Great Gatsby", "Scott Fitzgerald", 180, false),
   new Book("To Kill a Mockingbird", "Harper Lee", 281, false)
 ]
@@ -26,9 +26,9 @@ function addBookToLibrary(title, author, pages, readStatus) {
   myLibrary.push(newBook)
 }
 
-function displayBooks() {
+function displayBooks(library = myLibrary) {
   display.innerText = ''
-  myLibrary.forEach(book => {
+  library.forEach(book => {
     const bookCard = createCard(book)
     displayCard(bookCard)
   })
@@ -127,16 +127,12 @@ function addBookFromFormToLibrary() {
   addBookToLibrary(title.value, author.value, pages.value, status.checked)
 }
 
-// function sortMyLibrary() {
-//   myLibrary.sort((a, b) => {
-//     const titleA = a.title.toUpperCase()
-//     const titleB = b.title.toUpperCase()
-//     if (titleA < titleB) {
-//       return -1
-//     }
-//     if (titleA > titleB) {
-//       return 1
-//     }
-//     return 0
-//   })
-// }
+function sortMyLibrary(propertyToSortBy) {
+  myLibrary.sort((a, b) => {
+    const propertyOfA = a[propertyToSortBy]
+    const propertyOfB = b[propertyToSortBy]
+    if (propertyOfA > propertyOfB) {
+      return 1
+    } else return -1
+  })
+}
