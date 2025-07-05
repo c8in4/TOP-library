@@ -122,7 +122,9 @@ function addBookFromFormToLibrary() {
   const pages = document.querySelector("#pages")
   const status = document.querySelector("#status")
 
-  addBookToLibrary(title.value, author.value, pages.value, status.value)
+  console.log(status.checked)
+
+  addBookToLibrary(title.value, author.value, pages.value, status.checked)
 }
 
 // function sortMyLibrary() {
