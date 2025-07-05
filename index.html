@@ -20,38 +20,30 @@
 
 
     <dialog>
-      <img src="icons/close.svg" alt="close button" id="close-dialog-button" class="close-button" />
-      <form id="form" method="dialog">
-        <!-- 
-        <div>
-          <label for="title">
-            <p>*Title</p>
-            <input required type="text" name="title" id="title" />
-          </label>
+      <div class="dialog-header">
+        <h2>Add a book</h2>
+        <img src="icons/close.svg" alt="close button" id="close-dialog-button" class="close-button" />
+      </div>
+
+      <form id="add-book-form" method="dialog">
+        <div class="form-inputs">
+          <label for="title">Title*</label>
+          <input autofocus type="text" name="title" id="title" />
+          <label for="author">Author*</label>
+          <input required type="text" name="author" id="author" />
+          <label for="pages">Pages*</label>
+          <input required min="1" step="1" type="number" name="pages" id="pages" />
         </div>
-        <div>
-          <label for="author">
-            <p>*Author</p>
-            <input required type="text" name="author" id="author" />
-          </label>
+
+        <div class="form-checkbox">
+          <label for="status">Have you read this book?</label>
+          <input type="checkbox" name="status" id="status" />
         </div>
-        <div>
-          <label for="pages">
-            <p>*Pages</p>
-            <input required min="1" step="1" type="number" name="pages" id="pages" />
-          </label>
+
+        <div class="form-button-container">
+          <button type="reset">Reset</button>
+          <button type="submit">Add Book</button>
         </div>
-        <div>
-          <label for="status">
-            <p>Have you read this book?</p>
-            <input type="checkbox" name="status" id="status" />
-          </label>
-        </div>
-        <menu>
-          <input type="reset" value="Reset" />
-          <input id="add-book-button" type="submit" value="Add Book" />
-        </menu>
-        -->
       </form>
     </dialog>
   </main>

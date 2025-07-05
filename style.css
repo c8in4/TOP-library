@@ -183,7 +183,6 @@ main {
 }
 
 button {
-  margin-bottom: 1rem;
   background-color: var(--secondary);
   color: var(--text);
   padding: 0.2rem 0.5rem;
@@ -192,6 +191,7 @@ button {
 }
 
 button#open-dialog-button {
+  margin-bottom: 1rem;
   position: sticky;
   top: -0.5rem;
 }
@@ -235,10 +235,6 @@ img:hover {
   .cardButtonContainer {
     display: flex;
     justify-content: space-between;
-
-    button {
-      margin: 0;
-    }
   }
 }
 
@@ -246,87 +242,64 @@ img:hover {
   background: linear-gradient(var(--secondary), var(--bg) 50%);
 }
 
-.card .card-buttons {
-  /* display: flex;
-  align-items: center;
-  justify-content: space-between; */
-}
-
-.card-buttons button {
-  /* margin: 0; */
-}
-
-
-
-form div+div {
-  /* margin-top: 1rem; */
-}
-
-menu {
-  /* margin-top: 0.5rem;
-  text-align: center;
-  padding: 0;
-  width: 110%; */
-}
-
 dialog {
-  width: max-content;
+  color: var(--text);
+  padding: 0;
   border-radius: 0.5rem;
+  border: 0.07rem solid var(--border);
+  border-top: var(--highlight);
+  box-shadow: var(--box-shadow);
   position: absolute;
   left: 50%;
   top: 33%;
   transform: translate(-50%, -50%);
+
+  .dialog-header {
+    padding: 0.5rem;
+    background-color: var(--secondary);
+    display: flex;
+    justify-content: space-between;
+
+
+    .close-button {
+      border-radius: 50%;
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+
+  form {
+    padding: 2rem;
+    background: linear-gradient(var(--bg-light), var(--bg-dark) 100%);
+
+    div+div {
+      margin-top: 1rem;
+    }
+
+    .form-inputs {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 1rem;
+    }
+
+    .form-checkbox,
+    .form-button-container {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+  }
 }
 
 ::backdrop {
   background-image: var(--bg-light);
-  /* opacity: 0.75; */
   backdrop-filter: blur(0.25rem);
 }
 
-button,
-input[type="reset"],
-input[type="submit"] {
-  /* margin: 0.5rem auto;
-  border: none;
-  font-weight: bold;
-  background-color: #6cb7fd;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem; */
-}
-
-/* dialog input[type="reset"],
-dialog input[type="submit"] {
-  width: 50%;
-} */
-
-.close-button {
-  /* font-weight: bold;
-  border-radius: 50%;
-  height: 1.5rem;
-  width: 1.5rem;
-  position: relative;
-  left: 100%;
-  transform: translate(-100%, 0); */
-}
-
-button:hover,
-input[type="reset"]:hover,
-input[type="submit"]:hover {
-  /* cursor: pointer;
-  background-color: #88c3fb; */
-}
-
-input:invalid {
-  /* border: 1px solid red; */
+input:user-invalid {
+  border: 1px solid red;
 }
 
 input:valid {
-  /* border: 1px solid green; */
-
-}
-
-.close-button:hover,
-.delete-button:hover {
-  /* cursor: pointer; */
+  border: 1px solid green;
 }
