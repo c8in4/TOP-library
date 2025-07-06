@@ -136,6 +136,10 @@ body.dark {
   --info: oklch(0.7 0.05 260);
 
   --box-shadow: 0.1rem 0.1rem 0.5rem var(--text-muted);
+
+  img {
+    filter: invert(1);
+  }
 }
 
 .theme-button {
@@ -215,7 +219,6 @@ img#close-dialog-button {
 
 img:hover {
   cursor: pointer;
-  fill: aqua;
 }
 
 #display {
@@ -242,6 +245,10 @@ img:hover {
 
   p {
     color: var(--text-muted);
+  }
+
+  p:first-child {
+    margin-bottom: 1rem;
   }
 
   .infoContainer {

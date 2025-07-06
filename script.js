@@ -69,7 +69,7 @@ function createCard(book) {
   })
 
   const deleteButton = document.createElement('img')
-  deleteButton.src = 'icons/delete-white.svg'
+  deleteButton.src = 'icons/delete.svg'
   deleteButton.dataset.bookId = book.bookId
   cardButtonContainer.append(toggleReadStatusButton, deleteButton)
 
