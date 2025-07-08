@@ -95,10 +95,10 @@ h6 {
   --border-muted: oklch(0.7 0 110);
   --primary: oklch(0.76 0.1 110);
   --secondary: oklch(0.76 0.1 290);
-  --danger: oklch(0.5 0.05 30);
-  --warning: oklch(0.5 0.05 100);
-  --success: oklch(0.5 0.05 160);
-  --info: oklch(0.5 0.05 260);
+  --danger: oklch(0.5 0.1 30);
+  --warning: oklch(0.5 0.1 100);
+  --success: oklch(0.5 0.1 160);
+  --info: oklch(0.5 0.1 260);
 
   --box-shadow: 0.1rem 0.1rem 0.5rem var(--text-muted);
 }
@@ -130,10 +130,10 @@ body.dark {
   --border-muted: oklch(0.3 0 110);
   --primary: oklch(0.4 0.1 110);
   --secondary: oklch(0.4 0.1 290);
-  --danger: oklch(0.7 0.05 30);
-  --warning: oklch(0.7 0.05 100);
-  --success: oklch(0.7 0.05 160);
-  --info: oklch(0.7 0.05 260);
+  --danger: oklch(0.7 0.1 30);
+  --warning: oklch(0.7 0.1 100);
+  --success: oklch(0.7 0.1 160);
+  --info: oklch(0.7 0.1 260);
 
   --box-shadow: 0.1rem 0.1rem 0.5rem var(--text-muted);
 
@@ -309,6 +309,17 @@ dialog {
       }
     }
 
+    input[type='checkbox'] {
+      outline: none;
+    }
+
+    input {
+      background-color: var(--bg-light);
+      color: var(--text);
+      border-radius: 0.5rem;
+      outline: 0.1rem solid var(--border);
+    }
+
     .form-checkbox,
     .form-button-container {
       display: flex;
@@ -324,9 +335,9 @@ dialog {
 }
 
 input:user-invalid {
-  border: 1px solid red;
+  outline-color: var(--danger);
 }
 
-input:valid {
-  border: 1px solid green;
+input:user-valid {
+  outline-color: var(--success);
 }
