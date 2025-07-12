@@ -69,71 +69,41 @@ h6 {
 }
 
 :root {
-  /* hsl (fallback color) */
-  --bg-dark: hsl(224 0% 90%);
-  --bg: hsl(224 0% 95%);
-  --bg-light: hsl(224 100% 100%);
-  --text: hsl(224 0% 4%);
-  --text-muted: hsl(224 0% 28%);
-  --highlight: hsl(224 100% 100%);
-  --border: hsl(224 0% 50%);
-  --border-muted: hsl(224 0% 62%);
-  --primary: hsl(62 35% 57%);
-  --secondary: hsl(248 66% 79%);
-  --danger: hsl(9 21% 41%);
-  --warning: hsl(52 23% 34%);
-  --success: hsl(147 19% 36%);
-  --info: hsl(217 22% 41%);
   /* oklch */
-  --bg-dark: oklch(0.92 0 110);
-  --bg: oklch(0.96 0 110);
-  --bg-light: oklch(1 0 110);
-  --text: oklch(0.15 0 110);
-  --text-muted: oklch(0.4 0 110);
-  --highlight: oklch(1 0 110);
-  --border: oklch(0.6 0 110);
-  --border-muted: oklch(0.7 0 110);
-  --primary: oklch(0.76 0.1 110);
-  --secondary: oklch(0.76 0.1 290);
-  --danger: oklch(0.5 0.1 30);
-  --warning: oklch(0.5 0.1 100);
-  --success: oklch(0.5 0.1 160);
-  --info: oklch(0.5 0.1 260);
+  --clr-bg-dark: oklch(0.92 0 110);
+  --clr-bg: oklch(0.96 0 110);
+  --clr-bg-light: oklch(1 0 110);
+  --clr-text: oklch(0.15 0 110);
+  --clr-text-muted: oklch(0.4 0 110);
+  --clr-highlight: oklch(1 0 110);
+  --clr-border: oklch(0.6 0 110);
+  --clr-border-muted: oklch(0.7 0 110);
+  --clr-primary: oklch(0.76 0.1 110);
+  --clr-secondary: oklch(0.76 0.1 290);
+  --clr-danger: oklch(0.5 0.1 30);
+  --clr-warning: oklch(0.5 0.1 100);
+  --clr-success: oklch(0.5 0.1 160);
+  --clr-info: oklch(0.5 0.1 260);
 
   --box-shadow: 0.1rem 0.1rem 0.5rem var(--text-muted);
 }
 
 body.dark {
-  /* hsl (fallback color) */
-  --bg-dark: hsl(224 0% 1%);
-  --bg: hsl(224 0% 4%);
-  --bg-light: hsl(224 0% 9%);
-  --text: hsl(224 0% 95%);
-  --text-muted: hsl(224 0% 69%);
-  --highlight: hsl(224 0% 39%);
-  --border: hsl(224 0% 28%);
-  --border-muted: hsl(224 0% 18%);
-  --primary: hsl(60 100% 11%);
-  --secondary: hsl(252 34% 36%);
-  --danger: hsl(9 26% 64%);
-  --warning: hsl(52 19% 57%);
-  --success: hsl(146 17% 59%);
-  --info: hsl(217 28% 65%);
   /* oklch */
-  --bg-dark: oklch(0.1 0 110);
-  --bg: oklch(0.15 0 110);
-  --bg-light: oklch(0.2 0 110);
-  --text: oklch(0.96 0 110);
-  --text-muted: oklch(0.76 0 110);
-  --highlight: oklch(0.5 0 110);
-  --border: oklch(0.4 0 110);
-  --border-muted: oklch(0.3 0 110);
-  --primary: oklch(0.4 0.1 110);
-  --secondary: oklch(0.4 0.1 290);
-  --danger: oklch(0.7 0.1 30);
-  --warning: oklch(0.7 0.1 100);
-  --success: oklch(0.7 0.1 160);
-  --info: oklch(0.7 0.1 260);
+  --clr-bg-dark: oklch(0.1 0 110);
+  --clr-bg: oklch(0.15 0 110);
+  --clr-bg-light: oklch(0.2 0 110);
+  --clr-text: oklch(0.96 0 110);
+  --clr-text-muted: oklch(0.76 0 110);
+  --clr-highlight: oklch(0.5 0 110);
+  --clr-border: oklch(0.4 0 110);
+  --clr-border-muted: oklch(0.3 0 110);
+  --clr-primary: oklch(0.4 0.1 110);
+  --clr-secondary: oklch(0.4 0.1 290);
+  --clr-danger: oklch(0.7 0.1 30);
+  --clr-warning: oklch(0.7 0.1 100);
+  --clr-success: oklch(0.7 0.1 160);
+  --clr-info: oklch(0.7 0.1 260);
 
   --box-shadow: 0.1rem 0.1rem 0.5rem var(--text-muted);
 
@@ -143,24 +113,24 @@ body.dark {
 }
 
 .theme-button {
-  background-color: var(--bg-light);
+  background-color: var(--clr-bg-light);
   position: fixed;
   right: 1rem;
   top: 0.5rem;
   padding: 0.2rem 0.5rem;
-  border: 0.1rem solid var(--border);
+  border: 0.1rem solid var(--clr-border);
   border-radius: 0.5rem;
 }
 
 .theme-button:hover {
-  background-color: var(--bg);
-  border-color: var(--highlight);
+  background-color: var(--clr-bg);
+  border-color: var(--clr-highlight);
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--bg-dark);
-  color: var(--text);
+  background-color: var(--clr-bg-dark);
+  color: var(--clr-text);
   position: relative;
   height: 100vh;
   width: 100vw;
@@ -170,14 +140,14 @@ body {
 
 header,
 footer {
-  background-color: var(--secondary);
+  background-color: var(--clr-secondary);
   text-align: center;
   padding: 1em;
 }
 
 main {
   flex: 1;
-  background: linear-gradient(var(--bg-light), var(--bg-dark) 100%);
+  background: linear-gradient(var(--clr-bg-light), var(--clr-bg-dark) 100%);
   overflow-y: scroll;
   padding: 1rem;
   display: flex;
@@ -187,15 +157,15 @@ main {
 }
 
 button {
-  background-color: var(--secondary);
-  color: var(--text);
+  background-color: var(--clr-secondary);
+  color: var(--clr-text);
   padding: 0.2rem 0.5rem;
-  border: 0.1rem solid var(--border);
+  border: 0.1rem solid var(--clr-border);
   border-radius: 0.5rem;
 }
 
 div.display-control {
-  background-color: var(--bg-light);
+  background-color: var(--clr-bg-light);
   border-radius: 0.5rem;
   padding: 0.5rem;
   margin-bottom: 1rem;
@@ -208,13 +178,9 @@ div.display-control {
 }
 
 button:hover {
-  border-color: var(--highlight);
-  background-color: var(--primary);
+  border-color: var(--clr-highlight);
+  background-color: var(--clr-primary);
   cursor: pointer;
-}
-
-img#close-dialog-button {
-  src: var(--close-dialog-button);
 }
 
 img:hover {
@@ -231,10 +197,10 @@ img:hover {
 
 .card {
   padding: 1rem;
-  background: linear-gradient(var(--bg-light), var(--bg-dark) 100%);
+  background: linear-gradient(var(--clr-bg-light), var(--clr-bg-dark) 100%);
   border-radius: 0.5rem;
-  border: 0.07rem solid var(--border);
-  border-top: var(--highlight);
+  border: 0.07rem solid var(--clr-border);
+  border-top: var(--clr-highlight);
   box-shadow: var(--box-shadow);
   display: flex;
   flex-direction: column;
@@ -244,7 +210,7 @@ img:hover {
   }
 
   p {
-    color: var(--text-muted);
+    color: var(--clr-text-muted);
   }
 
   p:first-child {
@@ -262,15 +228,15 @@ img:hover {
 }
 
 .card:hover {
-  background: linear-gradient(var(--secondary), var(--bg) 50%);
+  background: linear-gradient(var(--clr-secondary), var(--clr-bg) 50%);
 }
 
 dialog {
-  color: var(--text);
+  color: var(--clr-text);
   padding: 0;
   border-radius: 0.5rem;
-  border: 0.07rem solid var(--border);
-  border-top: var(--highlight);
+  border: 0.07rem solid var(--clr-border);
+  border-top: var(--clr-highlight);
   box-shadow: var(--box-shadow);
   position: absolute;
   left: 50%;
@@ -279,7 +245,7 @@ dialog {
 
   .dialog-header {
     padding: 0.5rem;
-    background-color: var(--secondary);
+    background-color: var(--clr-secondary);
     display: flex;
     justify-content: space-between;
 
@@ -293,7 +259,7 @@ dialog {
 
   form {
     padding: 2rem;
-    background: linear-gradient(var(--bg-light), var(--bg-dark) 100%);
+    background: linear-gradient(var(--clr-bg-light), var(--clr-bg-dark) 100%);
 
     div+div {
       margin-top: 1rem;
@@ -314,10 +280,10 @@ dialog {
     }
 
     input {
-      background-color: var(--bg-light);
-      color: var(--text);
+      background-color: var(--clr-bg-light);
+      color: var(--clr-text);
       border-radius: 0.5rem;
-      outline: 0.1rem solid var(--border);
+      outline: 0.1rem solid var(--clr-border);
     }
 
     .form-checkbox,
@@ -330,14 +296,14 @@ dialog {
 }
 
 ::backdrop {
-  background-image: var(--bg-light);
+  background-image: var(--clr-bg-light);
   backdrop-filter: blur(0.25rem);
 }
 
 input:user-invalid {
-  outline-color: var(--danger);
+  outline-color: var(--clr-danger);
 }
 
 input:user-valid {
-  outline-color: var(--success);
+  outline-color: var(--clr-success);
 }
