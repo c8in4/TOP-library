@@ -1,3 +1,32 @@
+// constructoc
+// function Book(title, author, pages, readStatus) {
+//   if (!new.target) throw Error("Use 'new' operator to call 'Book' constructor")
+//   this.bookId = crypto.randomUUID()
+//   this.title = title
+//   this.author = author
+//   this.pages = pages
+//   this.readStatus = readStatus
+// }
+
+// Book.prototype.toggleReadStatus = function () {
+//   this.readStatus = !this.readStatus
+// }
+
+// class
+class Book {
+  bookId = crypto.randomUUID()
+  constructor(title, author, pages, readStatus) {
+    this.title = title
+    this.author = author
+    this.pages = pages
+    this.readStatus = readStatus
+  }
+
+  toggleReadStatus() {
+    this.readStatus = !this.readStatus
+  }
+}
+
 const myLibrary = [
   new Book('The Hobbit', 'J.R.R. Tolkin', 295, false),
   new Book("Pride and Prejudice", "Jane Austen", 259, true),
@@ -9,19 +38,6 @@ const display = document.querySelector("#display")
 const filterSelect = document.querySelector('#sortBooksBy')
 
 displayBooks()
-
-function Book(title, author, pages, readStatus) {
-  if (!new.target) throw Error("Use 'new' operator to call 'Book' constructor")
-  this.bookId = crypto.randomUUID()
-  this.title = title
-  this.author = author
-  this.pages = pages
-  this.readStatus = readStatus
-}
-
-Book.prototype.toggleReadStatus = function () {
-  this.readStatus = !this.readStatus
-}
 
 function addBookToLibrary(title, author, pages, readStatus) {
   const newBook = new Book(title, author, pages, readStatus)
